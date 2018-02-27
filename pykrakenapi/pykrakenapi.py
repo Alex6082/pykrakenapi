@@ -1164,11 +1164,6 @@ class KrakenAPI(object):
             descr.columns = ['descr_{}'.format(col) for col in descr.columns]
             del orders['descr']
             orders = pd.concat((orders, descr), axis=1)
-            for col in ['closetm', 'expiretm', 'opentm', 'starttm']:
-                orders.loc[:, col] = orders[col].astype(int)
-            for col in ['cost', 'fee', 'price', 'vol', 'vol_exec',
-                        'descr_price', 'descr_price2']:
-                orders.loc[:, col] = orders[col].astype(float)
 
         return orders
 
